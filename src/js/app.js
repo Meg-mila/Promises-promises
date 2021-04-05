@@ -1,15 +1,12 @@
-import json from './parser';
-import read from './reader';
+import GameSavingLoader from './gameSavingLoader';
 
-export default class GameSavingLoader {
-  static load() {
-    const data = read();
-    return data
-      .then((response) => {
-        const saving = json(response);
-        return saving;
-      }).catch((error) => {
-        console.log(error);
-      });
-  }
-}
+GameSavingLoader.load().then(
+  (saving) => {
+    // eslint-disable-next-line no-console
+    console.log(saving);
+  },
+  (error) => {
+    // eslint-disable-next-line no-console
+    console.log(error);
+  },
+);
